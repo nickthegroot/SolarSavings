@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.google.ar.sceneform.plugin'
+
+sceneform.asset(
+        'sampledata/models/solar_battery.obj',
+        'default',
+        'sampledata/models/solar_battery.sfa',
+        "src/main/res/raw/solar_battery"
+)
 
 android {
     compileSdkVersion 29

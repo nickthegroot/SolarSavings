@@ -37,7 +37,7 @@
     file: 'sampledata/models/solar_battery.obj',
     name: 'solar_battery',
     recenter: 'root',
-    scale: 0.0018519999999999999,
+    scale: 0.0013,
   },
   samplers: [
     {

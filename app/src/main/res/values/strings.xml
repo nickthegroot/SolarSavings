@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project #2</string>
+    <string name="app_name">Solar Savings</string>
     <string name="solar_title">Your Solar Stats</string>
     <string name="ac_power_subtitle">AC Power/Yr</string>
     <string name="coal_saved_subtitle">Coal Saved/Yr</string>

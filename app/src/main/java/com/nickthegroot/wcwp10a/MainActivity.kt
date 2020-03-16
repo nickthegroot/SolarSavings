@@ -65,19 +65,25 @@ class MainActivity : AppCompatActivity() {
                         return@handle
                     }
 
-                    getAndAddSolar(anchor)
-
-                    val node = TransformableNode(fragment.transformationSystem)
-                    val anchorNode = AnchorNode(anchor)
-                    node.renderable = renderable
-                    node.setParent(anchorNode)
-                    fragment.arSceneView.scene.addChild(anchorNode)
-//                    node.select()
+                    getAndAddStats(anchor)
+                    addSolarPanelToScene(anchor, renderable)
                 }
         }
     }
 
-    private fun getAndAddSolar(anchor: Anchor) {
+    private fun addSolarPanelToScene(
+        anchor: Anchor?,
+        renderable: ModelRenderable?
+    ) {
+        val node = TransformableNode(fragment.transformationSystem)
+        val anchorNode = AnchorNode(anchor)
+        node.renderable = renderable
+        node.setParent(anchorNode)
+        fragment.arSceneView.scene.addChild(anchorNode)
+        node.select()
+    }
+
+    private fun getAndAddStats(anchor: Anchor) {
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             if (location == null) {
                 return@addOnSuccessListener
@@ -100,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                         val annualPower = response.getJSONObject("outputs").getLong("ac_annual")
                         val annualCoalPounds = annualPower * POUNDS_COAL_PER_KWH
 
-                        addSolarToScene(anchor, annualPower, annualCoalPounds)
+                        addSolarStatsToScene(anchor, annualPower, annualCoalPounds)
                     }
 
                     override fun onError(anError: ANError?) {
@@ -111,7 +117,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun addSolarToScene(anchor: Anchor, annualPower: Long, annualCoalPounds: Double) {
+    private fun addSolarStatsToScene(anchor: Anchor, annualPower: Long, annualCoalPounds: Double) {
         ViewRenderable.builder()
             .setView(this, R.layout.solar_stats)
             .build()

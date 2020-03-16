@@ -1,4 +1,4 @@
-# Solar AR
+# Solar Savings
 WCWP 10A Project #2
 
 ## Works Cited
